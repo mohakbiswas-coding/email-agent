@@ -1,0 +1,64 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div class="card">
+  <div class="detail-header" style="margin-bottom:12px;">
+    <div>
+      <div class="section-title">Agent</div>
+      <h2 style="margin:0;">Chat &amp; Draft Reply</h2>
+      <p class="muted" style="margin-top:4px;">Use a prompt template + instruction to generate a tailored response to this email.</p>
+    </div>
+  </div>
+
+  <div class="split">
+    <!-- Left: email -->
+    <div class="card" style="box-shadow:none;">
+      <div class="detail-header">
+        <div>
+          <div class="detail-title">{{ email.subject }}</div>
+          <div class="muted">From: {{ email.sender }} • {{ email.timestamp }}</div>
+        </div>
+      </div>
+      <pre>{{ email.body }}</pre>
+    </div>
+
+    <!-- Right: agent controls -->
+    <div class="card" style="box-shadow:none;">
+      <form method="post" class="stack-v">
+        {% csrf_token %}
+        <div>
+          <label class="section-title">Prompt template</label><br>
+          <select name="prompt_content" style="width:100%; padding:7px 9px; border-radius:8px; border:1px solid var(--border);">
+            {% for p in prompts %}
+              <option value="{{ p.content }}"
+                {% if selected_prompt_content == p.content %}selected{% endif %}>
+                {{ p.name }} ({{ p.type }})
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label class="section-title">Instruction for this run</label><br>
+          <textarea name="instruction" rows="4"
+                    style="width:100%; padding:8px 9px; border-radius:10px; border:1px solid var(--border);">
+{{ user_instruction }}</textarea>
+        </div>
+
+        <div>
+          <button class="btn btn-primary" type="submit" name="run_agent">Run Agent</button>
+          <button class="btn" type="submit" name="save_draft" style="margin-left:6px;">
+            Run &amp; Save as Draft
+          </button>
+        </div>
+      </form>
+
+      {% if agent_reply %}
+        <div style="margin-top:12px;">
+          <div class="section-title">Agent reply</div>
+          <pre>{{ agent_reply }}</pre>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

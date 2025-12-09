@@ -1,0 +1,92 @@
+{% extends "emails/base.html" %}
+{% block content %}
+
+<div class="card">
+  <div class="detail-header" style="margin-bottom:12px;">
+    <div>
+      <div class="section-title">Workspace</div>
+      <h2 style="margin:0;">Inbox</h2>
+      <p class="muted" style="margin-top:4px;">Browse messages, run the AI agent, and jump into detailed chat.</p>
+    </div>
+  </div>
+
+  <div class="inbox-layout">
+
+    <!-- LEFT: list -->
+    <div class="inbox-list">
+      <div class="inbox-header">
+        <h2>Inbox</h2>
+        <span class="muted">{{ emails|length }} messages</span>
+      </div>
+
+      {% for e in emails %}
+        <div
+          class="email-item {% if selected_email and selected_email.id == e.id %}selected{% endif %}">
+          <a href="?email_id={{ e.id }}" style="text-decoration:none; color:inherit;">
+            <div class="email-subject">{{ e.subject }}</div>
+            <div class="email-meta">
+              {{ e.sender }} • {{ e.timestamp }}
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- RIGHT: detail -->
+    <div class="stack-v">
+      {% if selected_email %}
+        <div class="card" style="box-shadow:none; border-color:#e5e7eb;">
+          <div class="detail-header">
+            <div>
+              <div class="detail-title">{{ selected_email.subject }}</div>
+              <div class="muted">
+                From: {{ selected_email.sender }} • {{ selected_email.timestamp }}
+              </div>
+            </div>
+            {% if process_result and process_result.category %}
+              <span class="badge-category">{{ process_result.category }}</span>
+            {% endif %}
+          </div>
+
+          <pre>{{ selected_email.body }}</pre>
+
+          <div style="margin-top:10px;">
+            <form method="post" style="display:inline;">
+              {% csrf_token %}
+              <button class="btn btn-primary" type="submit" name="process_email">
+                Run Agent (categorize + extract)
+              </button>
+            </form>
+            {% if selected_email %}
+              <a class="btn btn-ghost" href="{% url 'agent' selected_email.id %}" style="margin-left:6px;">
+                Open Agent Chat →
+              </a>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if process_result %}
+          <div class="split">
+            <div class="card">
+              <div class="section-title">Raw actions</div>
+              <pre>{{ process_result.actions_raw }}</pre>
+            </div>
+            {% if actions_json_pretty %}
+              <div class="card">
+                <div class="section-title">Parsed actions</div>
+                <pre>{{ actions_json_pretty }}</pre>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="card" style="box-shadow:none; border-style:dashed; text-align:center;">
+          <p style="margin:4px 0 6px 0;">Select a message from the inbox to see details.</p>
+          <p class="muted">Once selected, you can run the agent or open the chat view.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

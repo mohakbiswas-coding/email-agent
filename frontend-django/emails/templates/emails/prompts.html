@@ -1,0 +1,56 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div class="card">
+  <div class="detail-header" style="margin-bottom:12px;">
+    <div>
+      <div class="section-title">Prompt Studio</div>
+      <h2 style="margin:0;">Prompt Editor</h2>
+      <p class="muted" style="margin-top:4px;">Tune how the AI behaves for categorization, extraction, and reply drafting.</p>
+    </div>
+  </div>
+
+  <div class="split">
+    <!-- Form -->
+    <div class="card" style="box-shadow:none;">
+      <form method="post" class="stack-v">
+        {% csrf_token %}
+        <div>
+          <label class="section-title">Prompt name</label><br>
+          <input type="text" name="name"
+                 style="width:100%; padding:7px 9px; border-radius:8px; border:1px solid var(--border);">
+        </div>
+        <div>
+          <label class="section-title">Type</label>
+          <div class="muted" style="margin-bottom:3px;">e.g. <code>categorize</code>, <code>extract_actions</code>, <code>draft_reply</code></div>
+          <input type="text" name="type"
+                 style="width:100%; padding:7px 9px; border-radius:8px; border:1px solid var(--border);">
+        </div>
+        <div>
+          <label class="section-title">Template content</label><br>
+          <textarea name="content" rows="10"
+                    style="width:100%; padding:8px 9px; border-radius:10px; border:1px solid var(--border); font-family:monospace;"></textarea>
+        </div>
+        <div>
+          <button class="btn btn-primary" type="submit">Save prompt</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- List -->
+    <div class="card" style="box-shadow:none; max-height:480px; overflow:auto;">
+      <div class="section-title">Saved prompts</div>
+      {% for p in prompts %}
+        <div style="border:1px solid var(--border); border-radius:10px; padding:8px; margin-bottom:8px; background:#f9fafb;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <div><strong>{{ p.name }}</strong></div>
+            <span class="pill">{{ p.type }}</span>
+          </div>
+          <pre>{{ p.content }}</pre>
+        </div>
+      {% empty %}
+        <p class="muted">No prompts yet. Create one on the left.</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

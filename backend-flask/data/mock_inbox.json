@@ -1,0 +1,108 @@
+[
+    {
+      "id": "e-001",
+      "sender": "alice@acme.com",
+      "subject": "Project kickoff: availability next week",
+      "timestamp": "2025-11-20T09:15:00Z",
+      "body": "Hi Mohak,\n\nCan we schedule a 60-minute kickoff meeting next week to align on milestones and owners? I'm available Tue 10-12 or Wed 14-17 (UTC). Please propose times that work for you.\n\nThanks,\nAlice"
+    },
+    {
+      "id": "e-002",
+      "sender": "newsletter@techemail.com",
+      "subject": "Your weekly tech digest — November highlights",
+      "timestamp": "2025-11-18T07:00:00Z",
+      "body": "Top stories this week: AI benchmarks, developer tools, and community events. Read more inside."
+    },
+    {
+      "id": "e-003",
+      "sender": "hr@company.com",
+      "subject": "Open enrollment reminder: choose your benefits by Dec 1",
+      "timestamp": "2025-11-25T12:30:00Z",
+      "body": "Hi,\n\nThis is a reminder to complete your benefits enrollment before Dec 1, 2025. Log in to the HR portal and confirm your selections. If you need help, reply to this email.\n\nHR Team"
+    },
+    {
+      "id": "e-004",
+      "sender": "no-reply@shop.com",
+      "subject": "Your invoice for order #4921",
+      "timestamp": "2025-11-05T16:47:00Z",
+      "body": "Thank you for your purchase. Attached is the invoice for order #4921. Total charged: $89.99."
+    },
+    {
+      "id": "e-005",
+      "sender": "john@client.org",
+      "subject": "Request: please prepare a quote for Q1 contract",
+      "timestamp": "2025-11-21T08:50:00Z",
+      "body": "Hi Mohak,\n\nWe need a quote for support services for Q1. Could you prepare an itemized quote by next Wednesday (2025-11-27)? Also include hourly rates and SLAs. Thanks, John."
+    },
+    {
+      "id": "e-006",
+      "sender": "spam@random.sale",
+      "subject": "You won! Claim your prize now",
+      "timestamp": "2025-10-30T03:20:00Z",
+      "body": "Congratulations! You are selected to receive a prize. Click the link and enter your details."
+    },
+    {
+      "id": "e-007",
+      "sender": "team-lead@prod.com",
+      "subject": "Action required: merge the payment fix by EOD",
+      "timestamp": "2025-11-19T13:05:00Z",
+      "body": "Please merge the fix for the payment API into main and deploy to staging by EOD today. Testing notes are in the PR. Ping me when done."
+    },
+    {
+      "id": "e-008",
+      "sender": "events@meetups.org",
+      "subject": "Invitation: DevOps meetup on 3rd December",
+      "timestamp": "2025-11-10T10:00:00Z",
+      "body": "You're invited: DevOps meetup on 2025-12-03 at 18:00 in Bangalore. RSVP to secure a seat."
+    },
+    {
+      "id": "e-009",
+      "sender": "kate@research.net",
+      "subject": "Can you review these slides before Friday?",
+      "timestamp": "2025-11-23T04:20:00Z",
+      "body": "Hi — I attached draft slides for the client pitch. Can you review and comment by Friday (2025-11-28)? Focus on the timeline and estimated costs. Thanks!"
+    },
+    {
+      "id": "e-010",
+      "sender": "social@friends.com",
+      "subject": "Dinner this weekend?",
+      "timestamp": "2025-11-22T18:40:00Z",
+      "body": "Hey! A few of us are going for dinner on Saturday at 8pm. You in?"
+    },
+    {
+      "id": "e-011",
+      "sender": "alerts@monitoring.com",
+      "subject": "ALERT: High error rate on api/v1/orders",
+      "timestamp": "2025-11-24T02:16:00Z",
+      "body": "We observed an increase in 500 responses on /api/v1/orders between 02:00 and 02:10 UTC. Error rate ~12%. Please investigate and report findings."
+    },
+    {
+      "id": "e-012",
+      "sender": "recruiting@startup.io",
+      "subject": "Interview scheduling — Frontend Engineer",
+      "timestamp": "2025-11-12T09:30:00Z",
+      "body": "Dear Mohak,\n\nWe'd like to schedule a 40-minute interview for the Frontend Engineer role. Are you available Tue 2025-11-25 09:00 or Wed 2025-11-26 16:00 (IST)? Let us know which slot works.\n\nRegards,\nRecruiting team"
+    },
+    {
+      "id": "e-013",
+      "sender": "alerts@bank.com",
+      "subject": "Suspicious login detected",
+      "timestamp": "2025-11-16T21:00:00Z",
+      "body": "We detected a login from a new device on 2025-11-16 at 20:55 IST. If this was not you, please secure your account immediately."
+    },
+    {
+      "id": "e-014",
+      "sender": "pm@company.com",
+      "subject": "Weekly status update (action: add your tasks)",
+      "timestamp": "2025-11-17T07:45:00Z",
+      "body": "Team — Please update your weekly status in the tracker with tasks completed and planned by Friday. Include blockers and ETA for major items."
+    },
+    {
+      "id": "e-015",
+      "sender": "service@cloudops.com",
+      "subject": "Maintenance scheduled: 2025-12-05 02:00-03:00 UTC",
+      "timestamp": "2025-11-08T11:05:00Z",
+      "body": "We will perform maintenance on 2025-12-05 between 02:00 and 03:00 UTC. Expect a brief interruption to some services."
+    }
+  ]
+  

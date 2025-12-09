@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Email Agent</title>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #f1f5f9;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --danger: #ef4444;
+      --radius-lg: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #020617 100%);
+      margin: 0;
+      padding: 24px 0;
+      color: #111827;
+    }
+
+    a { color: inherit; }
+
+    header {
+      max-width: 1150px;
+      margin: 0 auto 14px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 4px;
+      color: #e5e7eb;
+    }
+
+    .app-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .app-title span.logo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22c55e, #22d3ee);
+      box-shadow: 0 0 0 4px rgba(34,197,94,.24);
+    }
+
+    nav a {
+      margin-left: 16px;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: #e5e7eb;
+      border: 1px solid transparent;
+      transition: all .15s ease-out;
+    }
+
+    nav a:hover {
+      border-color: rgba(148,163,184,.4);
+      background: rgba(15,23,42,.4);
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #f9fafb, #eef2ff);
+      padding: 16px;
+      border-radius: 22px;
+      box-shadow:
+        0 20px 45px rgba(15,23,42,.55),
+        0 0 0 1px rgba(148,163,184,.4);
+    }
+
+    h1, h2, h3, h4, h5 {
+      margin-top: 0;
+      color: #111827;
+    }
+
+    .muted { color: var(--muted); font-size: 12px; }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(15,23,42,.06);
+      padding: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: #f9fafb;
+      color: #111827;
+      transition: all .12s ease-out;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #eff6ff;
+      border-color: var(--primary);
+      box-shadow: 0 10px 25px rgba(37,99,235,.35);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .btn-ghost:hover {
+      background: #f3f4f6;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 500;
+      background: var(--primary-soft);
+      color: #1d4ed8;
+    }
+
+    pre {
+      background:#f3f4f6;
+      padding:10px;
+      border-radius:8px;
+      white-space:pre-wrap;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* Inbox layout */
+    .inbox-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .inbox-list {
+      border-radius: var(--radius-lg);
+      background: #0b1120;
+      color: #e5e7eb;
+      padding: 10px 0;
+      box-shadow: inset 0 0 0 1px rgba(148,163,184,.3);
+    }
+
+    .inbox-header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding: 4px 14px 8px 14px;
+    }
+
+    .inbox-header h2 {
+      font-size: 16px;
+      color: #e5e7eb;
+    }
+
+    .email-item {
+      padding: 9px 14px;
+      cursor: pointer;
+      border-radius: 10px;
+      margin: 2px 8px;
+      transition: background .12s ease-out, transform .08s ease-out;
+    }
+
+    .email-item:hover {
+      background: rgba(148,163,184,.2);
+      transform: translateY(-1px);
+    }
+
+    .email-item.selected {
+      background: rgba(59,130,246,.22);
+    }
+
+    .email-subject {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .email-meta {
+      font-size: 12px;
+      color: #cbd5f5;
+    }
+
+    .detail-header {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom: 6px;
+    }
+
+    .detail-title {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .badge-category {
+      padding: 3px 10px;
+      border-radius:999px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      background:#f3f4ff;
+      color:#4f46e5;
+      border:1px solid #e0e7ff;
+    }
+
+    .stack-v { display:flex; flex-direction:column; gap:10px; }
+
+    .split {
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      margin-top: 10px;
+    }
+
+    .split > div { flex:1; }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    /* Simple responsive tweak */
+    @media (max-width: 900px) {
+      .inbox-layout {
+        grid-template-columns: 1fr;
+      }
+      header, .container {
+        margin: 0 12px;
+      }
+      body {
+        padding: 8px 0 16px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="app-title">
+      <span class="logo-dot"></span>
+      <span>Email Agent</span>
+    </div>
+    <nav>
+      <a href="{% url 'inbox' %}">Inbox</a>
+      <a href="{% url 'prompts' %}">Prompts</a>
+      <a href="{% url 'drafts' %}">Drafts</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

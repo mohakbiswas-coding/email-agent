@@ -1,0 +1,33 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div class="card">
+  <div class="detail-header">
+    <div>
+      <div class="section-title">Outbox</div>
+      <h2 style="margin:0;">Drafts</h2>
+      <p class="muted" style="margin-top:4px;">All AI-generated replies are collected here for manual review.</p>
+    </div>
+  </div>
+
+  {% if drafts %}
+    <div class="stack-v">
+      {% for d in drafts %}
+        <div class="card" style="box-shadow:none; border-color:#e5e7eb;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <strong>{{ d.subject }}</strong>
+              <div class="muted">{{ d.created_at }}</div>
+            </div>
+          </div>
+          <pre style="margin-top:8px;">{{ d.body }}</pre>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card" style="box-shadow:none; border-style:dashed; text-align:center;">
+      <p>No drafts yet.</p>
+      <p class="muted">Use the Agent page to generate and save a reply first.</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
