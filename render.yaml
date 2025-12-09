@@ -1,0 +1,30 @@
+services:
+  # ---------- Flask API backend ----------
+  - type: web
+    name: email-agent-backend
+    runtime: python
+    plan: free
+    rootDir: backend-flask
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false        # you'll set the real value in the dashboard
+      - key: GROQ_MODEL
+        value: llama-3.1-8b-instant
+
+  # ---------- Django frontend ----------
+  - type: web
+    name: email-agent-frontend
+    runtime: python
+    plan: free
+    rootDir: frontend-django
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn email_site.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        sync: false        # set this in the dashboard
+      - key: FLASK_API_BASE
+        value: https://email-agent-backend.onrender.com

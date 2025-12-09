@@ -3,10 +3,10 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'replace-this-with-a-secure-key-for-production'
+SECRET_KEY = 'mhakbwas22426709abxfyuig'
 DEBUG = True
 
-ALLOWED_HOSTS = []  # add hostnames/IPs in production
+ALLOWED_HOSTS = ["*"]   # quick & easy for demo; tighten later if you want
 
 INSTALLED_APPS = [
     'django.contrib.admin',
