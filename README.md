@@ -13,7 +13,9 @@ The system can:
 - Save AI-generated drafts
 <img width="1533" height="872" alt="image" src="https://github.com/user-attachments/assets/17f62e28-b3eb-45a6-aa58-6b6dcb438845" />
 
-- Manage customizable prompt templates  
+- Manage customizable prompt templates
+ <img width="1516" height="898" alt="image" src="https://github.com/user-attachments/assets/4e097d55-f3a4-4498-bed4-af5e3faa575c" />
+ 
 - Browse inbox and run agent actions interactively  
 
 ---
