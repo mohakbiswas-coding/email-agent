@@ -2,11 +2,17 @@
 A full-stack Email Assistant using **Flask**, **Django**, and **Groq LLaMA 3.1**.  
 The system can:
 
-- Categorize emails  
+- Categorize emails
+<img width="1525" height="891" alt="image" src="https://github.com/user-attachments/assets/3115205f-ce8d-4f54-ac59-08e661bcfab7" />
+ 
 - Extract actionable tasks  
-- Generate draft replies with AI  
+- Generate draft replies with AI
+<img width="1533" height="885" alt="image" src="https://github.com/user-attachments/assets/1f3d92b7-1c69-4e70-a574-7279b1f28f3d" />
+
 - Allow user instructions for personalized responses  
-- Save AI-generated drafts  
+- Save AI-generated drafts
+<img width="1533" height="872" alt="image" src="https://github.com/user-attachments/assets/17f62e28-b3eb-45a6-aa58-6b6dcb438845" />
+
 - Manage customizable prompt templates  
 - Browse inbox and run agent actions interactively  
 
